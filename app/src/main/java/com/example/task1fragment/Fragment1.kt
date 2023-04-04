@@ -114,7 +114,7 @@ class Fragment1 : Fragment() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        if(binding.resultText.visibility  == View.VISIBLE) {
+        if(this::binding.isInitialized && binding.resultText.visibility  == View.VISIBLE) {
             outState.putBoolean("isResult", true)
             outState.putStringArrayList("result", arrayListOf(value.text1, value.text2, value.result, value.action))
         }
