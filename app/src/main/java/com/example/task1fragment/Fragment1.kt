@@ -16,6 +16,15 @@ class Fragment1 : Fragment() {
 
     private lateinit var value: Value
 
+    companion object{
+        const val text1 = "text1"
+        const val text2 = "text2"
+        const val result = "result"
+        const val  action = "action"
+        const val resultText = "resultText"
+        const val saveResult = "saveResult"
+        const val resultValue = "resultValue"
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -23,7 +32,7 @@ class Fragment1 : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_1, container, false)
 
-        if(savedInstanceState?.getBoolean("isResult") == true){
+        if(savedInstanceState?.getBoolean(saveResult) == true){
             binding.appendButton.visibility = View.GONE
             binding.splitButton.visibility = View.GONE
             binding.reverseButton.visibility = View.GONE
@@ -32,7 +41,7 @@ class Fragment1 : Fragment() {
 
             binding.resultText.visibility = View.VISIBLE
 
-            val resultValue = savedInstanceState.getStringArrayList("result")
+            val resultValue = savedInstanceState.getStringArrayList(resultValue)
 
             if(resultValue!=null) {
                 value = Value(
@@ -45,13 +54,13 @@ class Fragment1 : Fragment() {
             }
         }
 
-        parentFragmentManager.setFragmentResultListener("result",this) { _, bundle ->
+        parentFragmentManager.setFragmentResultListener(resultText,this) { _, bundle ->
 
             value = Value(
-                bundle.getString("text1").toString(),
-                bundle.getString("text2"),
-                bundle.getString("result").toString(),
-                bundle.getString("action").toString(),
+                bundle.getString(text1).toString(),
+                bundle.getString(text2),
+                bundle.getString(result).toString(),
+                bundle.getString(action).toString(),
             )
             binding.result = value
 
@@ -99,7 +108,7 @@ class Fragment1 : Fragment() {
         }
 
         val bundle = Bundle()
-        bundle.putString("bundleKey", str.toString())
+        bundle.putString(action, str.toString())
         val fragmentB = Fragment2()
         fragmentB.arguments = bundle
 
@@ -115,8 +124,8 @@ class Fragment1 : Fragment() {
         super.onSaveInstanceState(outState)
 
         if(this::binding.isInitialized && binding.resultText.visibility  == View.VISIBLE) {
-            outState.putBoolean("isResult", true)
-            outState.putStringArrayList("result", arrayListOf(value.text1, value.text2, value.result, value.action))
+            outState.putBoolean(saveResult, true)
+            outState.putStringArrayList(resultValue, arrayListOf(value.text1, value.text2, value.result, value.action))
         }
     }
 

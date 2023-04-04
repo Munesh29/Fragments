@@ -23,7 +23,7 @@ class Fragment2 : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        actionString  = arguments?.getString("bundleKey").toString()
+        actionString  = arguments?.getString(Fragment1.action).toString()
 
         val view = inflater.inflate(R.layout.fragment_2, container, false)
 
@@ -64,18 +64,18 @@ class Fragment2 : Fragment() {
         if (text1.contains(text2) ||
             (actionString == "UPPERCASE" &&
                     (text1.uppercase()).contains((text2.uppercase())))) {
-            bundle.putString("text1", text1)
-            bundle.putString("text2", editText2.text.toString())
-            bundle.putString("action", actionString)
+            bundle.putString(Fragment1.text1, text1)
+            bundle.putString(Fragment1.text2, editText2.text.toString())
+            bundle.putString(Fragment1.action, actionString)
             bundle.putString(
-                "result",
+                Fragment1.result,
                 when (actionString) {
                     "SPLIT" -> text1.replace(text2, " $text2", false)
                     "UPPERCASE" -> text1.replace(text2, text2.uppercase(), true)
                     else -> ""
                 }
             )
-            parentFragmentManager.setFragmentResult("result", bundle)
+            parentFragmentManager.setFragmentResult(Fragment1.resultText, bundle)
             parentFragmentManager.popBackStack()
         } else {
             Toast.makeText(activity, "TEXT2 is not contained in TEXT1", Toast.LENGTH_SHORT).show()
@@ -85,10 +85,10 @@ class Fragment2 : Fragment() {
     private fun clickForReverseOrAppend(text1: String){
         val bundle = Bundle()
 
-        bundle.putString("text1", text1)
-        bundle.putString("action", actionString)
+        bundle.putString(Fragment1.text1, text1)
+        bundle.putString(Fragment1.action, actionString)
         bundle.putString(
-            "result",
+            Fragment1.result,
             when(actionString) {
                 "APPEND" -> text1 + editText2.text.toString()
                 "REVERSE" -> text1.reversed()
@@ -96,10 +96,10 @@ class Fragment2 : Fragment() {
             }
         )
         if(actionString == "APPEND") {
-            bundle.putString("text2", editText2.text.toString())
+            bundle.putString(Fragment1.text2, editText2.text.toString())
         }
 
-        parentFragmentManager.setFragmentResult("result", bundle)
+        parentFragmentManager.setFragmentResult(Fragment1.resultText, bundle)
         parentFragmentManager.popBackStack()
     }
 
