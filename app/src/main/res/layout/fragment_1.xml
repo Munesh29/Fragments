@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+        <variable
+            name="result"
+            type="com.example.task1fragment.Value" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fragment_container_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        tools:context=".Fragment1">
+
+
+        <Button
+            android:id="@+id/append_Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/append" />
+
+        <Button
+            android:id="@+id/split_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/split" />
+
+        <Button
+            android:id="@+id/reverse_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/reverse" />
+
+        <Button
+            android:id="@+id/uppercase_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/uppercase" />
+
+        <TextView
+            android:id="@+id/result_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_width"
+            android:layout_marginTop="@dimen/margin_width"
+            android:layout_marginEnd="@dimen/margin_width"
+            android:text="@{result.text2 != null ? `Your result is ` + result.result + `\nFor input ` + result.text1+ ` and `+result.text2 +` with action `+result.action : `Your result is ` + result.result + `\nFor input ` + result.text1 + ` with action `+result.action}"
+            android:textAlignment="center"
+            android:textSize="@dimen/text_size"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/reset_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/reset"
+            android:visibility="gone" />
+
+    </LinearLayout>
+</layout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Task 1 Fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="append">APPEND</string>
+    <string name="split">SPLIT</string>
+    <string name="reverse">REVERSE</string>
+    <string name="uppercase">UPPERCASE</string>
+    <string name="enter_a_text">Enter a Text</string>
+    <string name="reset">RESET</string>
+</resources>
