@@ -25,6 +25,7 @@ class Fragment1 : Fragment() {
         const val saveResult = "saveResult"
         const val resultValue = "resultValue"
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
